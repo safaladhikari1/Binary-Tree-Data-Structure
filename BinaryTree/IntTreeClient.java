@@ -18,6 +18,11 @@ public class IntTreeClient
      
      System.out.print("PostOrder: ");
      tree.printPostOrder();
-     System.out.println();       
+     System.out.println(); 
+     
+     System.out.println("Sum: " + tree.sum());
+     
+     System.out.println("Levels on a tree: " + tree.countLevels()); 
+     System.out.println("Number of leaf nodes: " + tree.countLeaves());     
    }
 }

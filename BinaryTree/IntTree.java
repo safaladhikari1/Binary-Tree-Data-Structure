@@ -129,5 +129,68 @@ public class IntTree
          System.out.println(root.data);
          printSideways(root.left, level + 1);
       }   
+   }
+   
+   // returns sum of data stored in the IntTreeNodes in the tree
+   // if the tree has not IntTreeNodes, it returns 0
+   public int sum()
+   {
+      return sum(root);   
+   }
+   
+   private int sum(IntTreeNode root)
+   {
+      if(root == null)
+      {
+         return 0;
+      }
+      else
+      {
+         return root.data + sum(root.left) + sum(root.right);
+      }
+   }
+   
+   // returns the number of levels in a tree
+   // height of a tree of one node == 0, empty tree has height of -1
+   // height of a tree is 1 less than its number of levels
+   public int countLevels()
+   {
+      return countLevels(root);
+   }
+   
+   private int countLevels(IntTreeNode root)
+   {
+      if(root == null)
+      {
+         return 0;
+      }
+      else
+      {
+         return 1 + Math.max(countLevels(root.left), countLevels(root.right));
+      }
+   }
+   
+   // returns a count of the number of leaf nodes in a tree
+   // Both left and right child nodes of leaf node are NULL.
+   // each leaf node returns 1, and those answers are added together by other calls
+   public int countLeaves()
+   {
+      return countLeaves(this.root);
+   }
+   
+   private int countLeaves(IntTreeNode root)
+   {
+      if(root == null)
+      {
+         return 0;
+      }
+      else if(root.left == null && root.right == null)
+      {
+         return 1;
+      }
+      else
+      {
+         return countLeaves(root.left) + countLeaves(root.right);
+      }
    }  
 }
