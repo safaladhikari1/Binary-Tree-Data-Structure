@@ -2,7 +2,7 @@
    @author Safal Adhikari
    @class IT 220
    @date 06/12/2020
-   @Binary Trees Programming Assignment: Construction of Basic Binary Tree to Generic Search Tree
+   @Binary Trees Programming Assignment: Construction of Basic Binary Tree to Generic Search Tree.
       This java file is a client program which constructs a SearchTree<String> and SearchTree<Integer>
       and puts words into alphabetical worder and puts number into numerical order.
 */
