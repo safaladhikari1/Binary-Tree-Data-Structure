@@ -74,28 +74,33 @@ public class Point
    }
    
    // Returns a String representation of this point.
-   @Override
+   
+   // Override Object's toString() method
+   @Override 
    public String toString()
    {
       // return super.toString() if you want to print the memory address
       return "(" + this.x + ", " + this.y + ")";
    }
    
-    // Returns whether o refers to a point with the same (x, y)
-    // coordinates as this point.
-    public final boolean equals(Object o) 
-    {
-        if (o instanceof Point) 
-        {
-            Point other = (Point) o;
-            return x == other.x && y == other.y;
-        } 
+   // Returns whether obj refers to a point with the same (x, y)
+   // coordinates as "this" point.   
+    
+   // Override Object's equals method
+   @Override  
+   public boolean equals(Object obj) 
+   {    
+       // convert obj from an Object into a Point, then save it into a variable called other           
+       if(obj instanceof Point) 
+       {
+           Point other = (Point) obj;
+           if(this.x == other.getX() && this.y == other.getY())
+           {
+              return true;
+           }           
+       } 
         
-        // not a Point object
-        else 
-        { 
-            return false;
-        }
-    }
-     
+       // not the point with the same (x , y) 
+       return false;
+    }    
 }
