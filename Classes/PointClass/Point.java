@@ -90,9 +90,12 @@ public class Point
    @Override  
    public boolean equals(Object obj) 
    {    
-       // convert obj from an Object into a Point, then save it into a variable called other           
+       // examining if parameter obj has the Point object         
        if(obj instanceof Point) 
        {
+           // convert (cast) obj from an Object into a Point object, so the compiler will trust that we can access its x and y fields.
+           // then save it into a variable called other 
+           
            Point other = (Point) obj;
            if(this.x == other.getX() && this.y == other.getY())
            {
@@ -100,7 +103,7 @@ public class Point
            }           
        } 
         
-       // not the point with the same (x , y) 
+       // not the Point object
        return false;
     }    
 }
