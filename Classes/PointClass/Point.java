@@ -97,13 +97,12 @@ public class Point
            // then save it into a variable called other 
            
            Point other = (Point) obj;
-           if(this.x == other.getX() && this.y == other.getY())
-           {
-              return true;
-           }           
+           return this.x == other.getX() && this.y == other.getY();         
+       }
+       else
+       {
+            // not the Point object
+            return false;       
        } 
-        
-       // not the Point object
-       return false;
     }    
 }

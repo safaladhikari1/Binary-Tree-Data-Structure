@@ -5,7 +5,7 @@ public class LegalSecretary extends Secretary
    @Override
    public double getSalary()
    {
-      return 45000.0;
+      return super.getSalary() + 5000.0; // 5k more than general employee
    }
    
    // new behavior of LegalSecretary objects

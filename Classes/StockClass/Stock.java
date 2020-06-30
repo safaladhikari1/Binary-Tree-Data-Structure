@@ -15,9 +15,9 @@ public class Stock
          throw new NullPointerException();
       }
       
-      symbol = theSymbol;
-      totalShares = 0;
-      totalCost = 0.0;
+      this.symbol = theSymbol;
+      this.totalShares = 0;
+      this.totalCost = 0.0;
    }
    
    // Returns the total profit or loss earned on this stock,
@@ -46,6 +46,12 @@ public class Stock
       
       totalShares += shares;
       totalCost += shares * pricePerShare;
+   }
+   
+   // returns the total shares purchased of this stock
+   public int getTotalShares()
+   {
+      return this.totalShares;
    }  
 }
 
