@@ -1,6 +1,11 @@
 // A class to represent legal secretaries.
 public class LegalSecretary extends Secretary
 {
+   public LegalSecretary(int initialYears)
+   {
+      super(initialYears);
+   }
+   
    // Overrides getSalary from Employee class
    @Override
    public double getSalary()

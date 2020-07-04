@@ -8,7 +8,7 @@ public class EmployeeMain
       DecimalFormat output = new DecimalFormat("$00000.00");
       
       System.out.print("Employee: ");
-      Employee sarah = new Employee();
+      Employee sarah = new Employee(2);
       System.out.print(sarah.getHours() + ", ");
       System.out.print(output.format(sarah.getSalary()) + ", ");
       System.out.print(sarah.getVacationDays() + ", ");
@@ -16,7 +16,7 @@ public class EmployeeMain
       
       System.out.println();
       System.out.print("Secretary: ");
-      Secretary amanda = new Secretary();
+      Secretary amanda = new Secretary(4);
       System.out.print(amanda.getHours() + ", ");
       System.out.print(output.format(amanda.getSalary()) + ", ");
       System.out.print(amanda.getVacationDays() + ", ");
@@ -25,7 +25,7 @@ public class EmployeeMain
       
       System.out.println();
       System.out.print("Lawyer: ");
-      Lawyer john = new Lawyer();
+      Lawyer john = new Lawyer(3);
       System.out.print(john.getHours() + ", ");
       System.out.print(output.format(john.getSalary()) + ", ");
       System.out.print(john.getVacationDays() + ", ");
@@ -34,7 +34,7 @@ public class EmployeeMain
       
       System.out.println();
       System.out.print("LegalSecretary: ");
-      LegalSecretary julia = new LegalSecretary();
+      LegalSecretary julia = new LegalSecretary(3);
       System.out.print(julia.getHours() + ", ");
       System.out.print(output.format(julia.getSalary()) + ", ");
       System.out.print(julia.getVacationDays() + ", ");

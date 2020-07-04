@@ -4,16 +4,21 @@ public class ShapesMain
 {
    public static void main(String[] args)
    {
-      Shape[] shapes = new Shape[3];
-      shapes[0] = new Rectangle(18, 18);
-      shapes[1] = new Triangle(30, 30, 30);
-      shapes[2] = new Circle(12);
+      Shape[] shapes = {
+         new Circle(12),
+         new Rectangle(18, 18),
+         new Triangle(30, 30, 30)   
+      };
       
-      for(int i = 0; i < shapes.length; i++)
+      for(int i=0; i < shapes.length; i++)
       {
-         System.out.println("area = " + shapes[i].getArea()
-                           + ", perimeter = " + shapes[i].getPerimeter());
-      }
-      
+         printShapeInfo(shapes[i]);
+      }   
+   }
+   
+   public static void printShapeInfo(Shape s)
+   {
+      System.out.println("Area: " + s.getArea());
+      System.out.println("Perimeter: " + s.getPerimeter());
    }
 }
