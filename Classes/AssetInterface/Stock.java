@@ -1,7 +1,7 @@
 // A Stock object represents purchases of shares of a stock.
 // Initial version.
 
-public class Stock extends ShareAsset implements Asset
+public class Stock extends ShareAsset
 {
    private int totalShares;
    
@@ -24,12 +24,6 @@ public class Stock extends ShareAsset implements Asset
    public int getTotalShares()
    {
       return this.totalShares;
-   }
-   
-   // returns the profit made on this stock
-   public double getProfit()
-   {
-      return getMarketValue() - super.getTotalCost();
    }
    
    // records a purchase of the given number of shares of

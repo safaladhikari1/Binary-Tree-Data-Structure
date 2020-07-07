@@ -1,7 +1,6 @@
 // A MutualFund object represents a mutual fund asset.
-// Initial version.
 
-public class MutualFund extends ShareAsset implements Asset
+public class MutualFund extends ShareAsset
 {
    private double totalShares;
    
@@ -24,12 +23,6 @@ public class MutualFund extends ShareAsset implements Asset
    public double getTotalShares()
    {
       return this.totalShares;
-   }
-   
-   // returns the profit made on this mutual fund
-   public double getProfit()
-   {
-      return getMarketValue() - super.getTotalCost();
    }
    
    // records purchase of the given shares at the given price

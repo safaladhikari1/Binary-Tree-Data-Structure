@@ -1,6 +1,6 @@
 // A ShareAsset object represents a general asset that has a symbol
-// and holds shares. Initial version.
-public class ShareAsset
+// and holds shares.
+public abstract class ShareAsset implements Asset
 {
    private String symbol;
    private double totalCost;
@@ -24,6 +24,17 @@ public class ShareAsset
    public double getCurrentPrice()
    {
       return this.currentPrice;
+   }
+   
+   // returns the current market value of this asset
+   public abstract double getMarketValue();
+   
+   // returns the profit earned on shares of this asset
+   public double getProfit()
+   {
+      // calls an abstract getMarketValue method
+      // (the subclass will provide its implementation)
+      return getMarketValue() - this.totalCost;
    }
    
    // returns this asset's total cost for all shares
