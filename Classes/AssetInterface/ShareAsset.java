@@ -33,7 +33,7 @@ public class ShareAsset
    }
    
    // sets the current share price of this asset
-   public void setCurrentPirce(double currentPrice)
+   public void setCurrentPrice(double currentPrice)
    {
       this.currentPrice = currentPrice;
    }
