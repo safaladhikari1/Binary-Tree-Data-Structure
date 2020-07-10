@@ -62,6 +62,7 @@ public class IntArray
   
   public static boolean equals(int[] list1, int[] list2)
   {
+      // check what makes it unequal
       
       if(list1.length != list2.length)
       {
@@ -97,6 +98,42 @@ public class IntArray
       list[i] = list[j];
       list[j] = temp; 
   }
+  
+  public static void rotateLeft(int[] list)
+  {
+      // store list[0] in temp
+      // loop until the second last index
+      // assign the last index to temp
+      
+      int temp = list[0];
+      
+      for(int i=0; i < list.length - 1; i++)
+      {
+         list[i] = list[i + 1];
+      }
+      
+      list[list.length - 1] = temp;
+  }
+  
+  public static void rotateRight(int[] list)
+  {
+      // save the last index list[list.length - 1] to temp
+      // loop from last index list[list.length - 1] coming backward, until list[1]
+      // then replace the values, while looping backwards
+      // assign list[0] the temp value.
+      
+      int temp = list[list.length - 1];
+      
+      int startIndex = list.length - 1;
+      for(int i = startIndex; i >= 1; i--)
+      {
+         list[i] = list[i - 1];
+      }
+      
+      list[0] = temp; 
+  }   
+  
+  
   
   
   

@@ -20,10 +20,15 @@ public class IntArrayMain
       IntArray.printIntArray(myArray2);
       //IntArray.swap(myArray1, 0, 1);
       
-      IntArray.reverse(myArray2);
+      //IntArray.reverse(myArray2);
 
-      IntArray.printIntArray(myArray2);
+      //IntArray.printIntArray(myArray2);
       
+      //IntArray.rotateLeft(myArray2);
+      
+      IntArray.rotateRight(myArray2);
+      
+      IntArray.printIntArray(myArray2);
       
    }
 }
