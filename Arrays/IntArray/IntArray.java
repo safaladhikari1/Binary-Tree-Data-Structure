@@ -131,16 +131,5 @@ public class IntArray
       }
       
       list[0] = temp; 
-  }   
-  
-  
-  
-  
-  
-  
-  
-   
-   
-   
-   
+  }     
 }
