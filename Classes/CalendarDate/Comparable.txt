@@ -1,0 +1,11 @@
+//In java.util, there is a Comparable.java
+
+//We do not have to write/create this
+//It has already been created for us and included in java.util
+
+/*
+public interface Comparable<T>
+{
+   public int compareTo(T other);
+}
+*/
