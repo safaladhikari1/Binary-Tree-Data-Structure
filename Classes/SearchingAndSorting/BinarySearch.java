@@ -23,6 +23,7 @@ public class BinarySearch
       System.out.println("Elapsed time (ms): " + (endTime - startTime));   
    }
    
+   // Assume that the elements of the input array are in sorted order.
    public static int binarySearch(int[] numbers, int target)
    {
       int min = 0;

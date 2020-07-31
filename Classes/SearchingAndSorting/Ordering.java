@@ -13,6 +13,9 @@ public class Ordering
       Arrays.sort(strings, String.CASE_INSENSITIVE_ORDER);
       System.out.println(Arrays.toString(strings));
       
-      
+      // sort array of strings by length using Comparator
+      Arrays.sort(strings, new LengthComparator());
+      System.out.println(Arrays.toString(strings));
+           
    }
 }
