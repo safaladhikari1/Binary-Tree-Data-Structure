@@ -1,3 +1,20 @@
+/*
+   Complexity Classes
+   
+   Class            Big-Oh     IfyouDouble N,...
+   
+   Constant         O(1)       Unchanged
+   Logarithmic      O(log2N)   Increases slightly
+   Linear           O(N)       Doubles
+   Log-Linear       O(Nlog2N)  Slightly more than doubles
+   
+   Bad:
+   
+   Quadratic        O(N^2)     Quadruples
+   Cubic            O(N^3)     Multiplies by 8
+   Explonential     O(2^N)     Multiplies drastically
+*/
+
 // Selection sort is an O(N^2) sorting algorithm
 
 // Since the code has two nested for loops, each of which processes the entire array,
@@ -41,20 +58,5 @@ public class SelectionSort
       int temp = list[i];
       list[i] = list[j];
       list[j] = temp;
-   }
-   
-   public static int range2(int[] numbers)
-   {
-      int maxDiff = 0;
-      for(int i=0; i<numbers.length; i++)
-      {
-         for(int j=i+1; j<numbers.length; j++)
-         {
-            int diff = Math.abs(numbers[j] - numbers[i]);
-            maxDiff = Math.max(maxDiff, diff);
-         }
-      }
-      
-      return maxDiff;
    }
 }
