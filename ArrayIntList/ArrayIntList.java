@@ -32,7 +32,7 @@ public class ArrayIntList
    public void add(int data)
    {
       // checks if the array has the capacity to add one more value to the list
-      checkCapacity(size + 1); 
+      ensureCapacity(size + 1);
       
       elementData[size] = data;
       size++;
@@ -40,7 +40,7 @@ public class ArrayIntList
    
    public void add(int index, int data)
    {
-      checkCapacity(size + 1);
+      ensureCapacity(size + 1);
       
       for(int i=size; i >= index+1; i--)
       {
@@ -54,10 +54,10 @@ public class ArrayIntList
    
    // Adds all of the data from a second ArrayIntList object.
    // one ArrayIntList object can access private elements of another ArrayIntList object,
-   // such as other.size, other.elementData, because they both belong to thes same class.
+   // such as other.size, other.elementData, because they both belong to the same class.
    public void addAll(ArrayIntList other)
    {
-      checkCapacity(size + other.size);
+      ensureCapacity(size + other.size);
       
       for(int i=0; i<other.size; i++)
       {
@@ -66,12 +66,26 @@ public class ArrayIntList
    }
    
    // Checks that the underlying array has the given capacity, size() < capacity
-   // throwing an IllegalStateException if it does not.
-   private void checkCapacity(int capacity)
+   // it creates a larger array
+   public void ensureCapacity(int capacity)
    {
       if(capacity > elementData.length)
       {
-         throw new IllegalStateException("exceeds list capacity");
+         int newCapacity = elementData.length * 2 + 1;
+         if(capacity > newCapacity)
+         {
+            newCapacity = capacity;
+         }
+         
+         // elementData = Arrays.copyOf(elementData, newCapacity); is optimized to run faster
+         
+         int[] newList = new int[newCapacity];
+         for(int i=0; i < size; i++)
+         {
+            newList[i] = elementData[i];
+         }
+         
+         elementData = newList;
       }
    }
    
