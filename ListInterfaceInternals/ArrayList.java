@@ -1,12 +1,13 @@
 // Class ArrayList<E> can be used to store a list of data of type E.
+
 import java.util.*;
 
-public class ArrayList<E>
+public class ArrayList<E> implements List<E>
 {
    private class ArrayListIterator implements Iterator<E>
    {
       private int position;         // current list position
-      private boolean removeOK;     // okay to remove now?
+      private boolean removeOK;     // whether it's okay to remove now
       
       // post: constructs an iterator for the given list
       public ArrayListIterator()
@@ -88,6 +89,8 @@ public class ArrayList<E>
    }
    
    //methods
+   
+   // post: appends the given value to the end of the list
    public void add(E data)
    {
       // checks if the array has the capacity to add one more value to the list
@@ -119,21 +122,17 @@ public class ArrayList<E>
       size++;
    }
    
-   // Adds all of the data from a second ArrayList<E> object.
-   // one ArrayList<E> object can access private elements of another ArrayList<E> object,
-   // such as other.size, other.elementData, because they both belong to the same class.
-   public void addAll(ArrayList<E> other)
+   // post: appends all values in the given list to the end of this list
+   public void addAll(List<E> other)
    {
-      ensureCapacity(size + other.size);
-      
-      for(int i=0; i<other.size; i++)
+      for(E data: other)
       {
-         add(other.elementData[i]);
+         add(data);
       }
    }
    
-   // Checks that the underlying array has the given capacity, size() < capacity
-   // it creates a larger array
+   // post: ensures that the underlying array has the given capacity; if not,
+   //       the size is doubled (or more if given capacity is even larger)
    public void ensureCapacity(int capacity)
    {
       if(capacity > elementData.length)
@@ -159,6 +158,8 @@ public class ArrayList<E>
       }
    }
    
+   // pre : 0 <= index < size() (throws IndexOutOfBoundsException if not)
+   // post: removes value at the given index, shifting subsequent values left
    public void remove(int index)
    {
       checkIndex(index);
@@ -174,11 +175,14 @@ public class ArrayList<E>
       size--;   
    }
    
+   // post: returns the current number of elements in the list
    public int size()
    {
       return size;
    }
    
+   // pre : 0 <= index < size() (throws IndexOutOfBoundsException if not)
+   // post: returns the value at the given index in the list
    public E get(int index)
    {
       checkIndex(index);
@@ -195,7 +199,7 @@ public class ArrayList<E>
          elementData[i] = null;
       }
       
-      this.size = 0;
+      size = 0;
    }
    
    // throws an IndexOutOfBoundException if the given index is not a legal index
@@ -208,6 +212,7 @@ public class ArrayList<E>
       }
    }
    
+   // pre : 0 <= index < size() (throws IndexOutOfBoundsException if not)
    // replaces the data at a certain location with some new data
    public void set(int index, E data)
    {
@@ -215,6 +220,8 @@ public class ArrayList<E>
       elementData[index] = data;
    }
    
+   // post : returns the position of the first occurrence of the given
+   //        value (-1 if not found)
    public int indexOf(E data)
    {
       for(int i=0; i < size; i++)
@@ -246,6 +253,7 @@ public class ArrayList<E>
       return new ArrayListIterator();
    }
    
+   // post: creates a comma-separated, bracketed version of the list
    @Override
    public String toString()
    {
