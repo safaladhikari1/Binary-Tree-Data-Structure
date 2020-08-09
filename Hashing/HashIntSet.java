@@ -24,4 +24,36 @@ public class HashIntSet
    {
       return Math.abs(value) % elementData.length;
    }
+   
+   // Adds the given element to this set, if it was not
+   // already contained in the set.
+   public void add (int value)
+   {
+      if(!contains(value))
+      {
+         // insert new value at front of list
+         
+      }
+   }
+   
+   // Returns true if the given value is found in this set.
+   public boolean contains(int value)
+   {
+      int bucket = hashFunction(value);
+      
+      HashEntry current = elementData[bucket];
+      
+      while(current != null)
+      {
+         if(current.data == value)
+         {
+            return true;
+         }
+         
+         current = current.next;
+      }
+      
+      return false;
+   }
+   
 }
