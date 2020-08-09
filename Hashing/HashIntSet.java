@@ -19,6 +19,7 @@ public class HashIntSet
    }
    
    private HashEntry[] elementData;
+   private int size;
    
    private int hashFunction(int value)
    {
@@ -27,12 +28,15 @@ public class HashIntSet
    
    // Adds the given element to this set, if it was not
    // already contained in the set.
-   public void add (int value)
+   public void add(int value)
    {
       if(!contains(value))
       {
          // insert new value at front of list
+         int bucket = hashFunction(value);
          
+         elementData[bucket] = new HashEntry(value, elementData[bucket]);
+         size++;
       }
    }
    
@@ -54,6 +58,40 @@ public class HashIntSet
       }
       
       return false;
+   }
+   
+   // Removes the given value if it is contained in the set.
+   // If the set does not contain the value, has no effect.
+   public void remove(int value)
+   {
+      int bucket = hashFunction(value);
+      
+      if(elementData[bucket] != null)
+      {
+         // check front of list        
+         if(elementData[bucket].data == value)
+         {
+            elementData[bucket] = elementData[bucket].next;
+            size--;
+         }
+         else
+         {
+            // check rest of list
+            HashEntry current = elementData[bucket];
+            
+            while(current.next != null && current.next.data != value)
+            {
+               current = current.next;
+            }
+            
+            // if the element is found, remove it
+            if(current.next != null && current.next.data == value)
+            {
+               current.next = current.next.next;
+               size--;
+            }            
+         }
+      }  
    }
    
 }
