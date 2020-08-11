@@ -94,4 +94,23 @@ public class HashIntSet
       }  
    }
    
+   // Removes all elements from the set.
+   public void clear()
+   {
+      for(int i=0; i < elementData.length; i++)
+      {
+         elementData[i] = null;
+      }
+      
+      size = 0;
+   }
+   
+   // Returns true if there are no elements in this queue.
+   public boolean isEmpty()
+   {
+      return size == 0;
+   }
+   
+   
+   
 }
