@@ -1,3 +1,5 @@
+// Implements a set of integers using a hash table.
+// The hash table uses separate chaining to resolve collisions.
 public class HashIntSet
 {
    // Represents a single value in a chain stored in one hash bucket.
@@ -111,6 +113,36 @@ public class HashIntSet
       return size == 0;
    }
    
+   // Returns the number of elements in the queue.
+   public int size()
+   {
+      return size;
+   }
    
+   // Returns a string representation of this queue
+   // The elements are not guaranteed to be listed in sorted order.
+   public String toString()
+   {
+      String result = "[";
+      boolean first = true;
+      if(!isEmpty())
+      {
+         for(int i=0; i < elementData.length; i++)
+         {
+            HashEntry current = elementData[i];
+            while(current != null)
+            {
+               if(!first)
+               {
+                  result += ", ";
+               }
+               result += current.data;
+               first = false;
+               current = current.next;
+            }
+         }
+      }
+      return result + "]";
+   } 
    
 }
