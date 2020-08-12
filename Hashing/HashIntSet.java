@@ -20,6 +20,7 @@ public class HashIntSet
       }
    }
    
+   private static final double MAX_LOAD_FACTOR = 0.75;
    private HashEntry[] elementData;
    private int size;
    
@@ -30,6 +31,7 @@ public class HashIntSet
       size = 0;
    }
    
+   // Returns the preferred hash bucket index for the given value.
    private int hashFunction(int value)
    {
       return Math.abs(value) % elementData.length;
@@ -41,9 +43,13 @@ public class HashIntSet
    {
       if(!contains(value))
       {
-         // insert new value at front of list
-         int bucket = hashFunction(value);
+         if(loadFactor() >= MAX_LOAD_FACTOR)
+         {
+            rehash();
+         }
          
+         // insert new value at front of list
+         int bucket = hashFunction(value);         
          elementData[bucket] = new HashEntry(value, elementData[bucket]);
          size++;
       }
@@ -124,6 +130,31 @@ public class HashIntSet
    public int size()
    {
       return size;
+   }
+   
+   private double loadFactor()
+   {
+      return (double) size / elementData.length;
+   }
+   
+   // Resizes the hash table to twice its former size.
+   private void rehash()
+   {
+      // replace element data array with a larger empty version
+      HashEntry[] oldElementData = elementData;
+      elementData = new HashEntry[2 * oldElementData.length];
+      size = 0;
+      
+      // re-add all of the old data into the new array
+      for(int i=0; i < oldElementData.length; i++)
+      {
+         HashEntry current = oldElementData[i];
+         while(current != null)
+         {
+            add(current.data);
+            current = current.next;
+         }
+      }
    }
    
    // Returns a string representation of this queue

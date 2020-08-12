@@ -18,6 +18,12 @@ public class HashMain
       
       System.out.println(set);
       
+      // test removal
+      set.remove(7);
+      System.out.println(set);
+      
+      
+      
       
    }   
 }
