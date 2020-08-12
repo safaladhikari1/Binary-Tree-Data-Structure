@@ -23,6 +23,13 @@ public class HashIntSet
    private HashEntry[] elementData;
    private int size;
    
+   // Constructs an empty set.
+   public HashIntSet()
+   {
+      elementData = new HashEntry[10];
+      size = 0;
+   }
+   
    private int hashFunction(int value)
    {
       return Math.abs(value) % elementData.length;
