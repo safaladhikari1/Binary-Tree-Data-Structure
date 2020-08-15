@@ -26,13 +26,13 @@ import java.util.NoSuchElementException;
 
 // Implements a priority queue of integers using a 
 // min-heap represented as an array.
-public class HeapIntPriorityQueue
+public class HeapIntPriorityQueue2
 {
    private int[] elementData;
    private int size;
    
    // Constructs an empty queue.
-   public HeapIntPriorityQueue()
+   public HeapIntPriorityQueue2()
    {
       elementData = new int[10];
       size = 0;
@@ -53,8 +53,7 @@ public class HeapIntPriorityQueue
       
       // "bubble up" toward root as necessary to fix ordering
       int index = size + 1;
-      boolean found = false; // have we found the proper place yet?
-      while(!found && hasParent(index))
+      while(hasParent(index))
       {
          int parent = parent(index);
          
@@ -65,7 +64,7 @@ public class HeapIntPriorityQueue
          }
          else
          {
-            found = true; // found proper location; stop the loop
+            break; // proper place found; terminate the loop
          }
       }
       
@@ -98,13 +97,18 @@ public class HeapIntPriorityQueue
       int result = peek();
       
       // move rightmost leaf to become new root
-      elementData[1] = elementData[size];
+      swap(elementData, 1, size);
       size--;
       
       // "bubble down" root as necessary to fix ordering
-      int index = 1;
-      boolean found = false; // have we found the proper place yet?
-      while(!found && hasLeftChild(index))
+      bubbleDown(1);
+      return result;    
+   }
+   
+   // Swaps the element at the given index as necessary to fix ordering.
+   private void bubbleDown(int index)
+   {
+      while(hasLeftChild(index))
       {
          int left = leftChild(index);
          int right = rightChild(index);
@@ -122,11 +126,9 @@ public class HeapIntPriorityQueue
          }
          else
          {
-            found = true; //found proper location; stop the loop
-         }   
-      }
-      
-      return result;      
+            break; //proper place found; terminate the loop
+         }        
+      }     
    }
    
    // Returns the number of elements in the queue.

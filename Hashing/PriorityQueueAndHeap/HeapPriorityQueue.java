@@ -1,46 +1,39 @@
 /* 
-   Any complete binary tree can actually be stored as an array,
-   where index 1 stores the root element,
-   and the children of index i are stored as
-   indexes 2i and 2i + 1.
+   A priority queue is an abstract data type, a description of a set of operations that a collection should have.
    
-   So the children of index 1 (the root)
-   are at indexes 2 and 3;
+   A heap is one possible efficient way of implementing those operations, but is not the only way of doing so.
    
-   the children of index 2 are at indexes 4 and 5.
-   { ,10, 50, 20, 70, 60, 44, 90, 80, 99, 65};
+   The Java class libraries add to this confusion by naming their class PriorityQueue when it should probably be represented
+   as an interface named PriorityQueue that is implemented by a class called HeapPriorityQueue,
+   to match other pairs like List/ArrayList or Set/TreeSet.
    
-                10
-                
-           50          20
-              
-      70       60    44      90
-          
-   80   99  65
-   
-   A min-heap
 */
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;
 
-// Implements a priority queue of integers using a 
+// Implements a priority queue of comparable objects using a 
 // min-heap represented as an array.
-public class HeapIntPriorityQueue
+public class HeapPriorityQueue<E extends Comparable<E>>
 {
-   private int[] elementData;
+   private E[] elementData;
    private int size;
    
    // Constructs an empty queue.
-   public HeapIntPriorityQueue()
+   @SuppressWarnings("unchecked")
+   public HeapPriorityQueue()
    {
-      elementData = new int[10];
+      // on my HeapSortMain.java I am testing using this constructor with HeapPriorityQueue of Integer
+      // per Polymorphism, we can't do new Object
+      elementData = (E[]) new Integer[10]; 
+      
+      //elementData = (E[]) new Object[10];
       size = 0;
    }
    
    // Adds the given element to this queue.
    // Page 1108 for visual representation
-   public void add(int value)
+   public void add(E value)
    {
       // resize if necessary
       if(size + 1 >= elementData.length)
@@ -58,7 +51,7 @@ public class HeapIntPriorityQueue
       {
          int parent = parent(index);
          
-         if(elementData[index] < elementData[parent])
+         if(elementData[index].compareTo(elementData[parent]) < 0)
          {
             swap(elementData, index, parent(index));
             index = parent(index);
@@ -80,7 +73,7 @@ public class HeapIntPriorityQueue
    
    // Returns the minimum value in the queue without modifying the queue.
    // If the queue is empty, throws a NoSuchElementException.
-   public int peek()
+   public E peek()
    {
       if(isEmpty())
       {
@@ -93,9 +86,9 @@ public class HeapIntPriorityQueue
    // Removes and returns the minimum value in the queue.
    // If the queue is empty, throws a NoSuchElementException.
    // Page 1109 for visualization
-   public int remove()
+   public E remove()
    {
-      int result = peek();
+      E result = peek();
       
       // move rightmost leaf to become new root
       elementData[1] = elementData[size];
@@ -110,12 +103,12 @@ public class HeapIntPriorityQueue
          int right = rightChild(index);
          int child = left;
          
-         if(hasRightChild(index) && elementData[right] < elementData[left])
+         if(hasRightChild(index) && elementData[right].compareTo(elementData[left]) < 0)
          {
             child = right;
          }
          
-         if(elementData[index] > elementData[child])
+         if(elementData[index].compareTo(elementData[child]) > 0)
          {
             swap(elementData, index, child);
             index = child;
@@ -190,9 +183,9 @@ public class HeapIntPriorityQueue
    }
    
    // switches the values at the two given indexes of the given array
-   private void swap(int[] a, int index1, int index2)
+   private void swap(E[] a, int index1, int index2)
    {
-      int temp = a[index1];
+      E temp = a[index1];
       a[index1] = a[index2];
       a[index2] = temp;
    }    
