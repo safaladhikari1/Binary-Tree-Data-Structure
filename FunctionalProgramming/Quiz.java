@@ -6,10 +6,11 @@ public class Quiz
    public static void main(String[] args)
    {
       Scanner console = new Scanner(System.in);
-      giveProblems(console, 5);
+      giveProblems(console, 5, "+");
+      giveProblems(console, 5, "*");
    }
    
-   public static void giveProblems(Scanner console, int numProblems)
+   public static void giveProblems(Scanner console, int numProblems, String text)
    {
       Random r = new Random();
       int numRight = 0;
@@ -18,8 +19,11 @@ public class Quiz
       {
          int x = r.nextInt(12) + 1;
          int y = r.nextInt(12) + 1;
-         System.out.print(x + " + " + y + " = ");
-         int answer = x + y;
+         System.out.print(x + " " + text + " " + y + " = ");
+         
+         //int answer = x text y; we can't do this for multiplication
+         
+         int answer = x + 5;
          
          int response = console.nextInt();
          
