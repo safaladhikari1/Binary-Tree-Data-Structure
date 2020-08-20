@@ -82,10 +82,7 @@ public class SumStreams
       
       System.out.println(sum);
       */
-      
-      // Using Reduce, we want to take all of the integers in a stream
-      // and combine them into one integer using multiplication.
-      
+          
       System.out.println(factorial(5));
       
          
@@ -93,6 +90,8 @@ public class SumStreams
    
    public static int factorial(int n)
    {
+     // Using Reduce, we want to take all of the integers in a stream
+     // and combine them into one integer using multiplication.
       return IntStream.range(2, n+1)
       .reduce(1, (a, b) -> a*b);
    } 

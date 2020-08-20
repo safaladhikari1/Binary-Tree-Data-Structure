@@ -21,7 +21,11 @@ public class HigherOrderFunction
       */
                
       int sum = Arrays.stream(numbers)
-         .map(Math::abs) // method reference, by directly calling Math.abs method
+         // method reference, by directly calling Math.abs method
+         // Math.abs is the function we want to pass to map
+         // We don't need to make a new function that is basically
+         // a second version of Math.abs
+         .map(Math::abs) 
          .filter(n -> n % 2 == 0)
          .distinct()
          .sum();
