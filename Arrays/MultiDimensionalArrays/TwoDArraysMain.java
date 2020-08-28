@@ -11,7 +11,15 @@ public class TwoDArraysMain
       TwoDArrays.print(temps);
       */
       
+      /*
+         10.0     0.0      0.0      0.0      0.0
+         0.0      0.0      0.0      98.0     0.0
+         0.0      0.0      0.0      0.0      0.0    
+      */
+      
+      
       // jagged arrays
+      
       
       double[][] jagged = new double[3][];
       jagged[0] = new double[2];
@@ -20,6 +28,10 @@ public class TwoDArraysMain
       
       TwoDArrays.print(jagged);
       
-      
+      /*
+         0.0      0.0
+         0.0      0.0      0.0      0.0
+         0.0      0.0      0.0      
+      */     
    }
 }  
