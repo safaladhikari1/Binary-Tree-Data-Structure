@@ -7,6 +7,24 @@
 // We have to split the array in half repeatedly until we hit the algorithm's base case, in which 
 // the subarrays each contain 1 element.
 
+/*
+   Merge Sort: Repeatedly divides the data in half,
+      sorts each half, and combines the sorted halves
+      into a sorted whole.
+         
+   The algorithm:
+   - Divide the list into two roughly equal halves.
+   - Sort the left half.
+   - Sort the right half.
+   - Merge the two sorted halves into one sorted list.
+   
+   - Often implemented recursively.
+   - An example of a "divide and conquer" algorithm.
+     - Invented by John von Neumann in 1945 
+
+*/
+
+
 import java.util.*;
 
 public class MergeSort
@@ -76,7 +94,5 @@ public class MergeSort
             i2++;
          }
       }
-   }
-   
-     
+   }  
 }
