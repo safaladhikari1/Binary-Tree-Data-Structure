@@ -1,5 +1,56 @@
 // Binary search algorithm is in the logarithmic complexity class, or O(log N).
 
+/*
+   How did we know the time cost of binary search was O(log N)?
+   
+   If we look at our binary search algorithm below:
+   
+   The only non-constant part of our time cost is the number of times our while loop runs.
+   
+   Each step on our while loop, will cut the range (dictated by min and max) in half, until our range have at least one index left between min and max.
+   
+   while(min <= max), if there isn't at least 1 index between min and max, while loop stops.
+   
+   So, the question is "how many times must we divide our original array size(n) in half until we get down to 1?"
+   
+   n * 1/2 * 1/2 .... = 1
+   
+   How many 1/2's are there? We don't know yet, but we can call that number x:
+   
+   n * (1/2) ^ x = 1
+   
+   To solve for x:
+   
+   n * (1^x / 2^x) = 1
+   
+   n / 2^x = 1
+   
+   n = 2^x
+   
+   
+   To get the x out of the exponent, We do Logarithms.
+   
+   ---
+   
+   Recall: log10 100 means, "What power must we raise 10 to, to get 100"? The answer is 2.
+   
+   So in this case, if we take the log2 of both sides..
+   
+   log2n = log2 2^x
+   
+   The right side asks, "what power must we raise 2 to, to get 2 ^x?"
+   The answer is x.
+   
+   log2n = x
+   
+   Therefore, the number of times we must divide n in half to get down to 1 is log2n.
+   
+   So our time complexity is O(log N)
+   
+   Careful, to use binary search the input array has to be already sorted.
+   
+*/
+
 import java.util.Arrays;
 
 public class BinarySearch
@@ -15,7 +66,7 @@ public class BinarySearch
       System.out.println(startTime);
       
       
-      System.out.println(binarySearch(testArray, 56));
+      System.out.println(binarySearch(testArray, 123));
       
       long endTime = System.currentTimeMillis();
       System.out.println(endTime);
