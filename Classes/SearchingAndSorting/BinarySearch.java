@@ -75,6 +75,51 @@ public class BinarySearch
    }
    
    // Assume that the elements of the input array are in sorted order.
+   public static boolean binarySearch(int[] nums, int target)
+   {
+      
+      // floorIndex and ceilingIndex are like walls, in which we can find the possible positions of our target.
+      // So by -1 we mean to start our wall to the left of 0th index.
+      int floorIndex = -1;
+      int ceilingIndex = nums.length;
+      
+      // If there isn't at least 1 index between floor and ceiling,
+      // we have run out of guesses and the number must not be present.
+      while(floorIndex + 1 < ceilingIndex)
+      {
+         int distance = ceilingIndex - floorIndex;
+         
+         int halfDistance = distance / 2;
+         
+         int guessIndex = floorIndex + halfDistance;
+         
+         int guessValue = nums[guessIndex];
+         
+         if(guessValue == target)
+         {
+            return true;
+         }
+         
+         if(guessValue > target)
+         {
+            // target is to the left, so move ceiling to the left
+            ceilingIndex = guessIndex;
+         }
+         else
+         {
+            // target is to the right, so move floor to the right
+            floorIndex = guessIndex;
+         }
+         
+      }
+      
+      return false;
+       
+   }
+   
+   
+   
+   /*
    public static int binarySearch(int[] numbers, int target)
    {
       int min = 0;
@@ -99,4 +144,5 @@ public class BinarySearch
       
       return -1; // not found
    }
+   */
 }
