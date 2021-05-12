@@ -32,7 +32,7 @@
             If it is, increment i, i will be 0 now
             At first loop, i will be 0, j will be 0, so there won't be any swapping.
             
-            We are incrementing i, if it is less than 70
+            We are incrementing i, if nums[j] is less than 70
             But j keeps on incrementing with the for loop.
             
             This for loop is mentioned on detail on Illustration of partition() section of the article: https://www.geeksforgeeks.org/quick-sort/

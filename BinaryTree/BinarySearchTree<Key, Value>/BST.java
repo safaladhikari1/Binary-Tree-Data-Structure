@@ -6,17 +6,17 @@
 
 */
 
-class BST<Key extends Comparable<Key>, Value>
+class BST<K extends Comparable<K>, V>
 {
    private Node root;
    
    private class Node
    {
       // key
-      private Key key;  
+      private K key;  
       
       // associated value
-      private Value val;
+      private V val;
       
       // links to subtrees
       private Node left, right;   
@@ -24,7 +24,7 @@ class BST<Key extends Comparable<Key>, Value>
       // no. of nodes in subtree
       private int n;
       
-      public Node(Key key, Value val, int n)
+      public Node(K key, V val, int n)
       {
          this.key = key;
          this.val = val;
@@ -50,12 +50,12 @@ class BST<Key extends Comparable<Key>, Value>
    }
    
    // Review pictures on Page 400
-   public Value get(Key key)
+   public V get(K key)
    {
       return get(root, key);
    }
    
-   private Value get(Node x, Key key)
+   private V get(Node x, K key)
    {
       // Return value associated with key in the subtree rooted at x
       // return null if key is not present in subtree rooted at x
@@ -81,14 +81,14 @@ class BST<Key extends Comparable<Key>, Value>
       }
    }
    
-   public void put(Key key, Value val)
+   public void put(K key, V val)
    {
       // Search for key. Update value if found; grow table if new.
       
       root = put(root, key, val);
    }
    
-   private Node put(Node x, Key key, Value val)
+   private Node put(Node x, K key, V val)
    {
       // Change key's value to val if key in subtree rooted at x.
       // Otherwise, add new node to subtree associating key with val.
